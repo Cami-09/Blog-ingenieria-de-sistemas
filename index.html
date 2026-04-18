@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camilo | Ingeniería de Sistemas</title>
+  <style>
+    :root {
+      --primary: #0077cc;
+      --secondary: #005fa3;
+      --dark: #222;
+      --light: #f0f2f5;
+      --white: #ffffff;
+      --success: #28a745;
+      --youtube: #FF0000;
+    }
+
+    * { box-sizing: border-box; }
+    body { font-family:'Segoe UI', Roboto, sans-serif; background: var(--light); color:#333; margin:0; padding:0; scroll-behavior: smooth; }
+    
+    /* Navegación */
+    nav { background: var(--secondary); text-align:center; padding:15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    nav a { color:white; margin:0 15px; text-decoration:none; font-weight:bold; transition:0.3s; cursor: pointer; }
+    nav a:hover { color:#a0d4ff; }
+
+    /* Banner Principal (Hero) */
+    .hero {
+      background: linear-gradient(rgba(0, 119, 204, 0.8), rgba(0, 95, 163, 0.8)), 
+                  url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1350&q=80');
+      background-size: cover; background-position: center;
+      height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      color: white; text-align: center; padding: 0 20px;
+    }
+    .hero h1 { font-size: 2.8em; margin: 0; }
+
+    .container { max-width: 1000px; margin: -50px auto 50px; padding: 0 20px; position: relative; z-index: 10; }
+
+    /* Control de Secciones */
+    .content-section { display: none; animation: fadeIn 0.5s ease; }
+    .content-section.active { display: block; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Estilo de Tarjetas y Acordeones */
+    .card-base { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    
+    .accordion { 
+        background: var(--white); color: var(--primary); cursor:pointer; padding:20px; width:100%; border:none; 
+        text-align:left; font-size:1.1em; border-radius:10px; margin-bottom:10px; 
+        box-shadow:0 4px 10px rgba(0,0,0,0.05); transition:0.3s; font-weight: bold;
+    }
+    .accordion:hover { background: #e6f0ff; transform: scale(1.01); }
+    .panel { display: none; padding: 20px; background: white; border-radius: 0 0 10px 10px; border-top: 1px solid #eee; margin-bottom: 15px; }
+
+    /* Grid de Contenido (Usado en Tutoriales y Proyectos) */
+    .item-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
+    .item-img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; }
+    
+    @media (max-width: 768px) { .item-grid { grid-template-columns: 1fr; } }
+
+    /* Botones */
+    .btn { display: inline-block; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: 0.3s; margin-top: 10px; }
+    .btn-yt { background: var(--youtube); color: white; }
+    .btn-github { background: var(--dark); color: white; }
+    .btn-primary { background: var(--primary); color: white; border: none; width: 100%; cursor: pointer; }
+
+    footer { background: var(--dark); color:white; text-align:center; padding:30px; }
+
+    /* Formulario */
+    input, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a onclick="showSection('inicio')">Inicio</a>
+  <a onclick="showSection('tutoriales')">Tutoriales</a>
+  <a onclick="showSection('proyectos')">Proyectos</a>
+  <a onclick="showSection('contacto')">Contacto</a>
+</nav>
+
+<section class="hero">
+  <h1 id="hero-title">Ingeniería de Sistemas Camilo</h1>
+  <p id="hero-desc">Bienvenido a mi portafolio profesional y blog tecnológico</p>
+</section>
+
+<div class="container">
+
+  <div id="inicio" class="content-section active">
+    <div class="card-base">
+      <h2>Explora mi contenido</h2>
+      <p>Soy Camilo, estudiante de Ingeniería de Sistemas. En este espacio unificado podrás navegar por mis tutoriales interactivos, ver mis proyectos más recientes y contactarme directamente.</p>
+      <div class="item-grid" style="margin-top:20px;">
+        <div class="card-base" style="margin-bottom:0; text-align:center;">
+          <h3>🚀 Proyectos</h3>
+          <p>Mira mis últimos desarrollos en código.</p>
+        </div>
+        <div class="card-base" style="margin-bottom:0; text-align:center;">
+          <h3>📚 Tutoriales</h3>
+          <p>Aprende paso a paso con mis guías.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tutoriales" class="content-section">
+    <button class="accordion">🐍 Tutorial de Python</button>
+    <div class="panel">
+      <div class="item-grid">
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500" class="item-img">
+        <div>
+          <p>Domina Python para automatización y análisis de datos.</p>
+          <a href="https://youtube.com" target="_blank" class="btn btn-yt">▶ Ver en YouTube</a>
+        </div>
+      </div>
+    </div>
+
+    <button class="accordion">⚡ Tutorial de JavaScript</button>
+    <div class="panel">
+      <div class="item-grid">
+        <img src="https://images.unsplash.com/photo-1579403124614-197f69d8187b?w=500" class="item-img">
+        <div>
+          <p>Crea interactividad real en tus sitios web.</p>
+          <a href="https://youtube.com" target="_blank" class="btn btn-yt">▶ Ver en YouTube</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="proyectos" class="content-section">
+    <button class="accordion">📋 Gestor de Tareas</button>
+    <div class="panel">
+      <div class="item-grid">
+        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=500" class="item-img">
+        <div>
+          <h3>Task Manager</h3>
+          <p>App con LocalStorage para organizar tu día.</p>
+          <a href="#" class="btn btn-github">GitHub Code</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="contacto" class="content-section">
+    <div class="card-base">
+      <h2>Envíame un mensaje</h2>
+      <form onsubmit="alert('Mensaje enviado'); return false;">
+        <input type="text" placeholder="Tu Nombre" required>
+        <input type="email" placeholder="Tu Correo" required>
+        <textarea rows="4" placeholder="¿En qué puedo ayudarte?"></textarea>
+        <button class="btn btn-primary">Enviar Formulario</button>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 - Blog de Ingeniería de Sistemas | Cami-09
+</footer>
+
+<script>
+  // Función para cambiar de sección sin recargar
+  function showSection(sectionId) {
+    // Ocultar todas las secciones
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(s => s.classList.remove('active'));
+    
+    // Mostrar la seleccionada
+    document.getElementById(sectionId).classList.add('active');
+    
+    // Cambiar texto del Hero según la sección
+    const titles = {
+        'inicio': 'Ingeniería de Sistemas Camilo',
+        'tutoriales': 'Tutoriales Especializados',
+        'proyectos': 'Mis Proyectos de Software',
+        'contacto': 'Ponte en Contacto'
+    };
+    document.getElementById('hero-title').innerText = titles[sectionId];
+  }
+
+  // Lógica de Acordeones
+  const acc = document.getElementsByClassName("accordion");
+  for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      const panel = this.nextElementSibling;
+      panel.style.display = (panel.style.display === "block") ? "none" : "block";
+    });
+  }
+</script>
+
+</body>
+</html>
