@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Camilo Carmona | Portafolio Pro</title>
+  <title>Camilo Carmona | Ingeniería de Sistemas</title>
   <style>
     :root {
       --primary: #0077cc;
@@ -12,229 +12,245 @@
       --light: #f4f7f6;
       --white: #ffffff;
       --accent: #00d4ff;
-      --youtube: #FF0000;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--light); color: #333; line-height: 1.6; }
+    body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--light); color: #333; overflow-x: hidden; }
 
-    /* Navegación */
-    nav { background: var(--dark); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    nav .nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; gap: 30px; }
-    nav a { color: white; text-decoration: none; font-weight: 600; cursor: pointer; transition: 0.3s; text-transform: uppercase; font-size: 0.9rem; }
+    /* Navegación Estilo Web */
+    nav { background: var(--dark); padding: 1rem 0; position: sticky; top: 0; z-index: 2000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    nav .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+    .logo { color: white; font-weight: 800; font-size: 1.4rem; letter-spacing: 1px; }
+    .nav-links { display: flex; gap: 25px; }
+    nav a { color: white; text-decoration: none; font-weight: 600; cursor: pointer; transition: 0.3s; text-transform: uppercase; font-size: 0.85rem; }
     nav a:hover { color: var(--accent); }
 
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(135deg, rgba(0, 119, 204, 0.9), rgba(0, 30, 60, 0.9)), 
-                  url('https://images.unsplash.com/photo-1517139274617-66f857af5084?auto=format&fit=crop&w=1350&q=80');
-      background-size: cover; background-position: center;
-      height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center;
-      color: white; text-align: center; padding: 0 20px; transition: 0.5s;
+    /* SLIDER PRINCIPAL (CARRUSEL) */
+    .slider-container { position: relative; width: 100%; height: 500px; overflow: hidden; background: #000; }
+    .slides { display: none; height: 100%; position: relative; }
+    .slides img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+    
+    .caption { 
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+      color: white; text-align: center; width: 80%; z-index: 10;
     }
-    .hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+    .caption h1 { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+    .caption p { font-size: 1.2rem; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
 
-    .container { max-width: 1100px; margin: -60px auto 60px; padding: 0 20px; position: relative; }
+    /* Controles del Slider */
+    .prev, .next { 
+      cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -22px; 
+      color: white; font-weight: bold; font-size: 24px; transition: 0.6s ease; border-radius: 0 3px 3px 0; 
+      user-select: none; z-index: 100; text-decoration: none;
+    }
+    .next { right: 0; border-radius: 3px 0 0 3px; }
+    .prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
 
-    /* Secciones */
-    .content-section { display: none; animation: slideUp 0.6s ease-out; }
-    .content-section.active { display: block; }
+    /* Indicadores (puntos) */
+    .dots-container { position: absolute; bottom: 20px; width: 100%; text-align: center; z-index: 100; }
+    .dot { cursor: pointer; height: 12px; width: 12px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block; transition: 0.6s ease; }
+    .active-dot, .dot:hover { background-color: var(--accent); }
+
+    /* Animación de desvanecimiento */
+    .fade { animation: fadeAnim 1.5s; }
+    @keyframes fadeAnim { from {opacity: .4} to {opacity: 1} }
+
+    /* Contenedores de Sección */
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    .content-section { display: none; min-height: 600px; }
+    .active-section { display: block; animation: slideUp 0.6s ease; }
     @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Tarjetas y Widgets */
-    .widget { background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px; }
-    .main-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 25px; }
+    /* Tarjetas y Contenido */
+    .grid-web { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+    .web-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; transition: 0.3s; cursor: pointer; border-bottom: 4px solid var(--primary); }
+    .web-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,119,204,0.15); }
+    .web-card i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; display: block; }
 
-    /* Acordeones */
+    /* Acordeones Estilo Profesional */
     .accordion { 
-      background: var(--white); color: var(--primary); cursor:pointer; padding:20px; width:100%; border:none; 
-      text-align:left; font-size:1.1rem; border-radius:10px; margin-bottom:10px; font-weight: 700;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; display: flex; justify-content: space-between;
+      background: white; padding: 22px; width: 100%; border: none; text-align: left; 
+      font-size: 1.1rem; font-weight: 700; color: var(--primary); cursor: pointer;
+      border-radius: 10px; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      display: flex; justify-content: space-between; align-items: center;
     }
-    .accordion:hover { background: #f0f7ff; transform: scale(1.01); }
-    .panel { display: none; padding: 25px; background: white; border-radius: 0 0 10px 10px; border-top: 1px solid #eee; margin-bottom: 15px; }
+    .panel { display: none; padding: 25px; background: white; border-radius: 0 0 10px 10px; margin-bottom: 20px; border-top: 1px solid #eee; }
 
-    /* Item Flex Layout */
-    .item-flex { display: flex; gap: 25px; align-items: center; }
-    .item-img { width: 350px; height: 220px; object-fit: cover; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .item-layout { display: flex; gap: 30px; align-items: center; }
+    .item-layout img { width: 300px; height: 200px; object-fit: cover; border-radius: 12px; }
 
-    /* Badges */
-    .badge { background: #e1ecf4; color: #39739d; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-right: 5px; }
-
-    /* Botones */
-    .btn { display: inline-block; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; border: none; cursor: pointer; text-align: center; }
-    .btn-yt { background: var(--youtube); color: white; margin-top: 15px; }
-    .btn-github { background: var(--dark); color: white; margin-top: 15px; }
-    .btn-primary { background: var(--primary); color: white; width: 100%; }
-
-    @media (max-width: 850px) {
-      .main-grid, .item-flex { grid-template-columns: 1fr; flex-direction: column; }
-      .item-img { width: 100%; }
+    @media (max-width: 768px) {
+      .item-layout { flex-direction: column; text-align: center; }
+      .item-layout img { width: 100%; }
+      .caption h1 { font-size: 2rem; }
     }
 
-    footer { background: var(--dark); color: white; padding: 40px; text-align: center; margin-top: 50px; }
+    footer { background: var(--dark); color: white; padding: 50px; text-align: center; }
+    .btn { display: inline-block; padding: 12px 25px; background: var(--primary); color: white; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 15px; border: none; cursor: pointer; }
   </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-container">
-    <a onclick="showSection('inicio')">Inicio</a>
-    <a onclick="showSection('tutoriales')">Tutoriales</a>
-    <a onclick="showSection('proyectos')">Proyectos</a>
-    <a onclick="showSection('contacto')">Contacto</a>
+    <div class="logo">CAMILO CARMONA</div>
+    <div class="nav-links">
+      <a onclick="showSection('inicio')">Inicio</a>
+      <a onclick="showSection('tutoriales')">Tutoriales</a>
+      <a onclick="showSection('proyectos')">Proyectos</a>
+      <a onclick="showSection('contacto')">Contacto</a>
+    </div>
   </div>
 </nav>
 
-<section class="hero">
-  <h1 id="hero-title">Camilo Carmona</h1>
-  <p id="hero-desc">Explora mis conocimientos y desarrollos en Ingeniería de Sistemas</p>
-</section>
+<div id="inicio" class="content-section active-section">
+  <div class="slider-container">
+    <div class="slides fade">
+      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1350&q=80">
+      <div class="caption">
+        <h1>Ingeniería de Sistemas</h1>
+        <p>Innovación, Desarrollo y Arquitectura de Software</p>
+        <button class="btn" onclick="showSection('proyectos')">Ver Proyectos</button>
+      </div>
+    </div>
+    <div class="slides fade">
+      <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&w=1350&q=80">
+      <div class="caption">
+        <h1>Tutoriales Interactivos</h1>
+        <p>Aprende las tecnologías más demandadas del mercado</p>
+        <button class="btn" onclick="showSection('tutoriales')">Empezar a Aprender</button>
+      </div>
+    </div>
+    <div class="slides fade">
+      <img src="https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?auto=format&fit=crop&w=1350&q=80">
+      <div class="caption">
+        <h1>Soluciones Digitales</h1>
+        <p>Transformando ideas complejas en código eficiente</p>
+        <button class="btn" onclick="showSection('contacto')">Contáctame</button>
+      </div>
+    </div>
 
-<div class="container">
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-  <div id="inicio" class="content-section active">
-    <div class="main-grid">
-      <div class="left-col">
-        <div class="widget">
-          <h2>Bienvenido al Blog Técnico</h2>
-          <p>Este es un espacio dedicado a la ingeniería. Aquí encontrarás desde la implementación de algoritmos complejos hasta el diseño de interfaces interactivas. Mi objetivo es documentar mi proceso de aprendizaje y ofrecer recursos útiles para la comunidad académica.</p>
-        </div>
-        <div class="widget">
-          <h3>Habilidades Destacadas</h3>
-          <div style="margin-top:15px;">
-            <p><strong>Python & Data Science</strong> - 85%</p>
-            <p><strong>Frontend (HTML/CSS/JS)</strong> - 90%</p>
-            <p><strong>Bases de Datos SQL</strong> - 75%</p>
-          </div>
+    <div class="dots-container">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="grid-web">
+      <div class="web-card" onclick="showSection('tutoriales')">
+        <i>🎓</i>
+        <h3>Academia</h3>
+        <p>Recursos educativos detallados con soporte de video en YouTube.</p>
+      </div>
+      <div class="web-card" onclick="showSection('proyectos')">
+        <i>🚀</i>
+        <h3>Portafolio</h3>
+        <p>Repasamos mis implementaciones reales en Python, JS y SQL.</p>
+      </div>
+      <div class="web-card" onclick="showSection('contacto')">
+        <i>✉️</i>
+        <h3>Contacto</h3>
+        <p>¿Buscas una colaboración o consultoría técnica? Hablemos.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="tutoriales" class="content-section">
+  <div class="container">
+    <h2 style="margin-bottom:30px; border-left: 5px solid var(--primary); padding-left: 15px;">Tutoriales Técnicos</h2>
+    
+    <button class="accordion">🐍 Programación Avanzada en Python <span>+</span></button>
+    <div class="panel">
+      <div class="item-layout">
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500">
+        <div>
+          <p>Manejo de librerías, lógica de objetos y automatización de procesos industriales.</p>
+          <a href="#" class="btn" style="background:#FF0000;">▶ Ver en YouTube</a>
         </div>
       </div>
-      <div class="right-col">
-        <div class="widget" style="text-align:center;">
-          <h3>¿Por dónde empezar?</h3>
-          <button class="btn btn-primary" style="margin-top:15px;" onclick="showSection('tutoriales')">Ir a Tutoriales</button>
-          <button class="btn btn-github" style="width:100%;" onclick="showSection('proyectos')">Ver Proyectos</button>
+    </div>
+    </div>
+</div>
+
+<div id="proyectos" class="content-section">
+  <div class="container">
+    <h2 style="margin-bottom:30px; border-left: 5px solid var(--primary); padding-left: 15px;">Mis Proyectos</h2>
+    <button class="accordion">📂 Sistema Administrativo Unificado <span>+</span></button>
+    <div class="panel">
+      <div class="item-layout">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500">
+        <div>
+          <p>Software clicleable para la gestión de directorios y datos académicos con persistencia.</p>
+          <a href="#" class="btn" style="background:#222;">Ver en GitHub</a>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div id="tutoriales" class="content-section">
-    <button class="accordion">🐍 Python: De Cero a Experto <span>▼</span></button>
-    <div class="panel">
-      <div class="item-flex">
-        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500" class="item-img">
-        <div>
-          <span class="badge">Backend</span><span class="badge">Lógica</span>
-          <p>Aprende estructuras de datos, manejo de archivos y automatización. Este tutorial incluye ejercicios prácticos para exámenes de universidad.</p>
-          <a href="https://youtube.com" class="btn btn-yt">▶ Ver Lista en YouTube</a>
-        </div>
-      </div>
-    </div>
-
-    <button class="accordion">🌐 Master en JavaScript Moderno <span>▼</span></button>
-    <div class="panel">
-      <div class="item-flex">
-        <img src="https://images.unsplash.com/photo-1579403124614-197f69d8187b?w=500" class="item-img">
-        <div>
-          <span class="badge">Frontend</span><span class="badge">ES6+</span>
-          <p>Domina el DOM, Fetch API y promesas. Aprende cómo hice que esta misma página sea dinámica sin recargar el navegador.</p>
-          <a href="#" class="btn btn-yt">▶ Ver Tutorial JS</a>
-        </div>
-      </div>
-    </div>
-
-    <button class="accordion">📊 Bases de Datos SQL <span>▼</span></button>
-    <div class="panel">
-      <div class="item-flex">
-        <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=500" class="item-img">
-        <div>
-          <span class="badge">SQL</span><span class="badge">Modelado</span>
-          <p>Diseño de diagramas Entidad-Relación y consultas complejas (JOINs, Subconsultas) para sistemas administrativos.</p>
-          <a href="#" class="btn btn-yt">▶ Ver Clase SQL</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="proyectos" class="content-section">
-    <button class="accordion">📂 Sistema de Gestión Universitaria <span>▼</span></button>
-    <div class="panel">
-      <div class="item-flex">
-        <img src="https://images.unsplash.com/photo-1454165833767-02a88316167c?w=500" class="item-img">
-        <div>
-          <span class="badge">Full Stack</span><span class="badge">CRUD</span>
-          <p>Plataforma completa para el registro de estudiantes, notas y directorios administrativos con una interfaz 100% clicleable.</p>
-          <a href="https://github.com/Cami-09" class="btn btn-github">Ver Código en GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <button class="accordion">🎮 Juego de Memoria en JS <span>▼</span></button>
-    <div class="panel">
-      <div class="item-flex">
-        <img src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=500" class="item-img">
-        <div>
-          <span class="badge">Games</span><span class="badge">Logic</span>
-          <p>Un reto mental desarrollado con JavaScript puro para practicar el manejo de estados y arreglos en programación.</p>
-          <a href="#" class="btn btn-github">Explorar Repositorio</a>
-        </div>
-      </div>
-    </div>
-
-    <button class="accordion">☁️ Monitor de Red en Python <span>▼</span></button>
-    <div class="panel">
-      <div class="item-flex">
-        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500" class="item-img">
-        <div>
-          <span class="badge">Networking</span><span class="badge">Scripts</span>
-          <p>Script avanzado que monitorea la latencia y el estado de servidores locales, enviando reportes automáticos por consola.</p>
-          <a href="#" class="btn btn-github">Ver Script</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="contacto" class="content-section">
-    <div class="widget" style="max-width: 600px; margin: 0 auto;">
-      <h2 style="text-align:center;">Hablemos de Ingeniería</h2>
-      <form onsubmit="alert('¡Mensaje enviado con éxito!'); return false;" style="margin-top:20px;">
-        <input type="text" placeholder="Nombre completo" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;">
-        <input type="email" placeholder="Correo electrónico" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;">
-        <textarea placeholder="Cuéntame sobre tu proyecto o duda..." style="width:100%; padding:12px; height:120px; border-radius:8px; border:1px solid #ddd;"></textarea>
-        <button class="btn btn-primary" style="margin-top:10px;">Enviar Consulta</button>
+<div id="contacto" class="content-section">
+  <div class="container" style="max-width: 600px;">
+    <div class="web-card" style="cursor: default;">
+      <h2>Formulario de Contacto</h2>
+      <form onsubmit="alert('Mensaje enviado'); return false;" style="margin-top:20px; text-align:left;">
+        <label>Nombre</label>
+        <input type="text" placeholder="Tu nombre..." style="width:100%; padding:12px; margin: 10px 0; border-radius:8px; border:1px solid #ddd;">
+        <label>Mensaje</label>
+        <textarea rows="5" style="width:100%; padding:12px; margin: 10px 0; border-radius:8px; border:1px solid #ddd;"></textarea>
+        <button class="btn" style="width:100%;">Enviar Mensaje</button>
       </form>
     </div>
   </div>
-
 </div>
 
 <footer>
   <p>© 2026 - Camilo Carmona | Ingeniería de Sistemas</p>
-  <p><small>Bucaramanga, Santander</small></p>
+  <p><small>Bucaramanga, Santander, Colombia</small></p>
 </footer>
 
 <script>
+  // LÓGICA DEL SLIDER
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) { showSlides(slideIndex += n); }
+  function currentSlide(n) { showSlides(slideIndex = n); }
+
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("slides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active-dot", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active-dot";
+  }
+
+  // Cambio automático de slides cada 5 segundos
+  setInterval(() => { plusSlides(1); }, 5000);
+
+  // NAVEGACIÓN SPA
   function showSection(id) {
-    document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    
-    const titles = {
-      'inicio': ['Camilo Carmona', 'Explora mis conocimientos y desarrollos'],
-      'tutoriales': ['Academia Técnica', 'Guías paso a paso con video'],
-      'proyectos': ['Portafolio de Software', 'Soluciones reales e implementaciones'],
-      'contacto': ['Contacto Profesional', '¿Tienes una propuesta o duda?']
-    };
-    
-    document.getElementById('hero-title').innerText = titles[id][0];
-    document.getElementById('hero-desc').innerText = titles[id][1];
+    document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active-section'));
+    document.getElementById(id).classList.add('active-section');
     window.scrollTo(0,0);
   }
 
-  // Acordeones Funcionales
+  // ACORDEONES
   document.querySelectorAll('.accordion').forEach(acc => {
     acc.addEventListener('click', function() {
-      this.classList.toggle('active');
       const panel = this.nextElementSibling;
       panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
     });
