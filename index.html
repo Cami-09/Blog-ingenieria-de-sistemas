@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camilo Carmona | Senior Software Engineer</title>
+    <title>Camilo Carmona | Portfolio Profesional</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -51,7 +51,7 @@
         nav a:hover, nav a.active { color: var(--white); border-bottom: 2px solid var(--accent); }
 
         /* --- HERO SLIDER --- */
-        .slider-container { position: relative; width: 100%; height: 70vh; min-height: 550px; overflow: hidden; background: var(--slate-900); }
+        .slider-container { position: relative; width: 100%; height: 70vh; min-height: 500px; overflow: hidden; background: var(--slate-900); }
         .slides { display: none; height: 100%; position: relative; animation: fadeIn 0.8s ease; }
         .slides img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; }
         .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(15, 23, 42, 0.8), transparent); }
@@ -59,7 +59,7 @@
             position: absolute; top: 50%; left: 10%; transform: translateY(-50%); 
             color: white; text-align: left; width: 55%; z-index: 10;
         }
-        .caption h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .caption h1 { font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
         
         .slider-ctrl {
             position: absolute; bottom: 30px; right: 50px; display: flex; gap: 15px; z-index: 100;
@@ -81,21 +81,28 @@
         .section-header h2 { font-size: 2.5rem; color: var(--dark); margin-bottom: 10px; }
         .bar { height: 4px; width: 70px; background: var(--primary); margin: 0 auto; border-radius: 10px; }
 
-        /* --- EXPERIENCIA PRO (IMÁGENES Y TEXTO) --- */
+        /* --- EXPERIENCIA PRO (CORREGIDA) --- */
         .exp-item { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; 
+            display: flex; flex-wrap: wrap; gap: 50px; 
             align-items: center; margin-bottom: 80px; background: white; 
             padding: 40px; border-radius: 30px; border: 1px solid var(--border); 
         }
-        .exp-item:nth-child(even) { direction: rtl; }
-        .exp-item:nth-child(even) .exp-text { direction: ltr; }
-        .exp-img-box { overflow: hidden; border-radius: 20px; height: 350px; }
-        .exp-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .exp-img-box:hover img { transform: scale(1.05); }
+        .exp-item:nth-child(even) { flex-direction: row-reverse; }
+        
+        .exp-img-box { 
+            flex: 1; min-width: 300px; height: 350px; 
+            border-radius: 20px; overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .exp-img-box img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            display: block; /* Asegura que la imagen se comporte bien */
+        }
+        .exp-text { flex: 1; min-width: 300px; }
         .exp-text h3 { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
         .tech-pill { display: inline-block; background: #eff6ff; color: var(--primary); padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; margin-bottom: 15px; }
 
-        /* --- PORTAFOLIO (IMÁGENES Y ENLACES) --- */
+        /* --- PORTAFOLIO --- */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
         .project-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); transition: 0.3s; }
         .project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
@@ -112,11 +119,10 @@
 
         footer { background: var(--slate-900); color: #94a3b8; padding: 60px 20px; text-align: center; margin-top: 50px; }
 
-        @media (max-width: 900px) {
-            .exp-item { grid-template-columns: 1fr; padding: 20px; }
-            .exp-item:nth-child(even) { direction: ltr; }
-            .exp-img-box { height: 250px; }
-            .caption h1 { font-size: 2.2rem; }
+        @media (max-width: 768px) {
+            .exp-item { padding: 20px; text-align: center; }
+            .exp-img-box { height: 200px; }
+            .caption h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -139,20 +145,20 @@
   <div class="slider-container">
     <div class="slides">
       <div class="overlay"></div>
-      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026">
+      <img src="https://images.unsplash.com/photo-1454165833767-02a698d1316a?q=80&w=2070" alt="Software Engineering">
       <div class="caption">
-        <h1>Sistemas Administrativos de Vanguardia</h1>
-        <p>Ingeniería de software diseñada para optimizar procesos críticos y gestión de datos.</p>
-        <button class="btn" onclick="showSection('proyectos')">Ver Portafolio <i class="fas fa-arrow-right"></i></button>
+        <h1>Ingeniería de Software de Precisión</h1>
+        <p>Soluciones administrativas diseñadas para la eficiencia corporativa.</p>
+        <button class="btn" onclick="showSection('proyectos')">Ver Portafolio</button>
       </div>
     </div>
     <div class="slides">
         <div class="overlay"></div>
-        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070">
+        <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?q=80&w=1974" alt="Code Development">
         <div class="caption">
-          <h1>Arquitectura Full-Stack</h1>
-          <p>Desarrollo robusto, escalable y con altos estándares de seguridad informática.</p>
-          <button class="btn" onclick="showSection('experiencia')">Detalles de Proyectos</button>
+          <h1>Desarrollo Full-Stack</h1>
+          <p>Especialista en arquitecturas robustas y escalables.</p>
+          <button class="btn" onclick="showSection('experiencia')">Detalles de Experiencia</button>
         </div>
     </div>
     <div class="slider-ctrl">
@@ -165,32 +171,30 @@
 <div id="experiencia" class="content-section">
     <div class="container">
         <div class="section-header">
-            <h2>Contexto & Ejecución Técnica</h2>
-            <p>Un recorrido detallado por la creación de mis sistemas.</p>
+            <h2>Contexto Técnico Detallado</h2>
             <div class="bar"></div>
         </div>
 
         <div class="exp-item">
             <div class="exp-img-box">
-                <img src="https://images.unsplash.com/photo-1504868584819-f8e905263543?q=80&w=1000" alt="Análisis SAU">
+                <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=1000" alt="Ecosistema SAU">
             </div>
             <div class="exp-text">
-                <span class="tech-pill">Backend & SQL Server</span>
-                <h3>Implementación del Ecosistema SAU</h3>
-                <p>La creación del **Sistema Administrativo Unificado** nació de la necesidad de centralizar la información. Aquí se diseñó un motor de base de datos capaz de soportar registros de miles de estudiantes con integridad total.</p>
-                <p>Se implementaron vistas de usuario personalizadas que permiten a los administrativos generar reportes complejos en un solo clic, eliminando el error humano en un 90%.</p>
+                <span class="tech-pill">Backend & Database</span>
+                <h3>Arquitectura del Ecosistema SAU</h3>
+                <p>El desarrollo del **Sistema Administrativo Unificado** se enfocó en eliminar la fragmentación de datos. Diseñé una estructura centralizada que permite la gestión de matrículas, notas y pagos en una sola interfaz segura.</p>
+                <p>Utilicé procedimientos almacenados optimizados para asegurar que las consultas masivas no afectaran el rendimiento del servidor durante picos académicos.</p>
             </div>
         </div>
 
         <div class="exp-item">
             <div class="exp-img-box">
-                <img src="https://images.unsplash.com/photo-1551288049-bbbda50a5f4e?q=80&w=1000" alt="Dashboards">
+                <img src="https://images.unsplash.com/photo-1551288049-bbbda50a5f4e?q=80&w=1000" alt="Dashboards Inteligentes">
             </div>
             <div class="exp-text">
-                <span class="tech-pill">Data Visualización</span>
-                <h3>Dashboards de Inteligencia</h3>
-                <p>Para este proyecto, el enfoque fue el **Business Intelligence**. Se integraron librerías de visualización dinámicas que extraen datos del núcleo del software para presentarlos de forma estratégica.</p>
-                <p>Cada gráfico fue diseñado pensando en la toma de decisiones gerenciales, permitiendo ver tendencias de crecimiento y operatividad en tiempo real.</p>
+                <span class="tech-pill">BI & Frontend</span>
+                <h3>Dashboards de Control Gerencial</h3>
+                <p>Para la toma de decisiones, implementé un módulo de Business Intelligence que traduce los datos del SAU en indicadores visuales. Esto permite a la dirección visualizar la retención estudiantil y el flujo financiero en tiempo real.</p>
             </div>
         </div>
     </div>
@@ -200,24 +204,23 @@
     <div class="container">
         <div class="section-header">
             <h2>Portafolio de Aplicaciones</h2>
-            <p>Enlaces directos a las soluciones ya desplegadas.</p>
             <div class="bar"></div>
         </div>
         <div class="project-grid">
             <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=600" class="project-img">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600" class="project-img">
                 <div class="project-info">
-                    <h3>Sistema SAU - Uniciencia</h3>
-                    <p>Aplicación oficial para la gestión académica y administrativa.</p>
-                    <a href="https://unicienciabga.edu.co/" target="_blank" class="btn" style="margin-top:15px; font-size: 0.8rem;">Visitar Sitio <i class="fas fa-external-link-alt"></i></a>
+                    <h3>Sistema SAU Uniciencia</h3>
+                    <p>Plataforma principal de gestión académica institucional.</p>
+                    <a href="https://unicienciabga.edu.co/" target="_blank" class="btn" style="margin-top:15px; font-size: 0.8rem;">Ir al Sitio <i class="fas fa-external-link-alt"></i></a>
                 </div>
             </div>
             <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600" class="project-img">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600" class="project-img">
                 <div class="project-info">
-                    <h3>Dashboard Corporativo</h3>
-                    <p>Herramienta analítica para el control de indicadores internos.</p>
-                    <a href="#" class="btn" style="margin-top:15px; font-size: 0.8rem;">Ver Proyecto <i class="fas fa-code"></i></a>
+                    <h3>Plataforma de Consultoría</h3>
+                    <p>Ecosistema digital para servicios técnicos especializados.</p>
+                    <a href="#" class="btn" style="margin-top:15px; font-size: 0.8rem;">Ver Detalles <i class="fas fa-code"></i></a>
                 </div>
             </div>
         </div>
@@ -226,11 +229,10 @@
 
 <div id="academia" class="content-section">
     <div class="container">
-        <div class="section-header"><h2>Formación Académica</h2><div class="bar"></div></div>
-        <div style="background:white; padding:40px; border-radius:20px; text-align:center; border: 1px solid var(--border);">
-            <i class="fas fa-university" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+        <div class="section-header"><h2>Academia</h2><div class="bar"></div></div>
+        <div style="background:white; padding:40px; border-radius:20px; text-align:center;">
             <h3>Ingeniería de Sistemas</h3>
-            <p>Enfoque en desarrollo de software y gestión de proyectos tecnológicos.</p>
+            <p>Bucaramanga, Santander, Colombia.</p>
         </div>
     </div>
 </div>
@@ -238,69 +240,52 @@
 <div id="contacto" class="content-section">
     <div class="container" style="max-width: 700px;">
         <div style="background:var(--dark); padding:50px; border-radius:30px; color:white; text-align: center;">
-            <h2>Hablemos de tu idea</h2>
-            <p style="margin-bottom:30px; color: #94a3b8;">Estoy disponible para nuevos retos profesionales.</p>
+            <h2>Contacto Directo</h2>
+            <p style="margin-bottom:20px; color: #94a3b8;">¿Iniciamos un nuevo proyecto?</p>
             <input type="text" placeholder="Nombre" style="width:100%; padding:15px; margin-bottom:15px; border-radius:10px; border:none;">
             <textarea placeholder="Mensaje" rows="4" style="width:100%; padding:15px; border-radius:10px; border:none;"></textarea>
-            <button class="btn" style="width:100%; margin-top:15px; justify-content:center;">Enviar Mensaje <i class="fas fa-paper-plane"></i></button>
+            <button class="btn" style="width:100%; margin-top:15px; justify-content:center;">Enviar Mensaje</button>
         </div>
     </div>
 </div>
 
 <footer>
-    <p>© 2026 Camilo Carmona | Ingeniería de Sistemas</p>
-    <div style="margin-top:15px;">
-        <a href="#" style="color:white; margin:0 10px;"><i class="fab fa-linkedin"></i></a>
-        <a href="#" style="color:white; margin:0 10px;"><i class="fab fa-github"></i></a>
-    </div>
+    <p>© 2026 Camilo Carmona</p>
 </footer>
 
 <script>
-    // LÓGICA DE PERSISTENCIA (SPA)
+    // NAVEGACIÓN SPA CON PERSISTENCIA
     function showSection(id) {
-        // Ocultar todas
         const sections = document.querySelectorAll('.content-section');
-        sections.forEach(section => section.classList.remove('active-section'));
+        sections.forEach(s => s.classList.remove('active-section'));
 
-        // Desactivar links
         const links = document.querySelectorAll('.nav-links a');
-        links.forEach(link => link.classList.remove('active'));
+        links.forEach(l => l.classList.remove('active'));
 
-        // Mostrar sección actual
-        const targetSection = document.getElementById(id);
-        if (targetSection) {
-            targetSection.classList.add('active-section');
-        }
+        const target = document.getElementById(id);
+        if (target) target.classList.add('active-section');
 
-        // Marcar link activo
         const activeLink = document.querySelector(`a[href="#${id}"]`);
-        if (activeLink) {
-            activeLink.classList.add('active');
-        }
+        if (activeLink) activeLink.classList.add('active');
     }
 
-    // Al cargar o refrescar
     window.addEventListener('load', () => {
-        const currentHash = window.location.hash.replace('#', '');
-        if (currentHash) {
-            showSection(currentHash);
-        } else {
-            showSection('inicio');
-        }
+        const hash = window.location.hash.replace('#', '');
+        showSection(hash || 'inicio');
     });
 
-    // LÓGICA DEL SLIDER PRINCIPAL
+    // SLIDER
     let slideIndex = 1;
     showSlides(slideIndex);
     function plusSlides(n) { showSlides(slideIndex += n); }
     function showSlides(n) {
         let slides = document.getElementsByClassName("slides");
-        if (n > slides.length) {slideIndex = 1}    
-        if (n < 1) {slideIndex = slides.length}
-        for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
-        if(slides[slideIndex-1]) slides[slideIndex-1].style.display = "block";  
+        if (n > slides.length) slideIndex = 1;
+        if (n < 1) slideIndex = slides.length;
+        for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+        if (slides[slideIndex-1]) slides[slideIndex-1].style.display = "block";
     }
-    setInterval(() => { plusSlides(1); }, 9000); // Cambio cada 9 seg
+    setInterval(() => { plusSlides(1); }, 10000);
 </script>
 
 </body>
