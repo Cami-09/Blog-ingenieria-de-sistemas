@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camilo Carmona | Senior Software Engineer</title>
+    <title>Camilo Carmona | Senior Software Engineer Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -12,11 +12,12 @@
             --primary-dark: #1d4ed8;
             --dark: #0f172a;
             --slate-900: #020617;
-            --light: #f1f5f9;
+            --light: #f8fafc;
             --white: #ffffff;
             --accent: #38bdf8;
             --border: #e2e8f0;
             --text-main: #334155;
+            --text-light: #64748b;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,36 +33,27 @@
         nav { 
             background: rgba(15, 23, 42, 0.95); 
             backdrop-filter: blur(12px); 
-            padding: 1rem 0; 
+            padding: 1.2rem 0; 
             position: sticky; 
             top: 0; 
             z-index: 2000; 
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         nav .nav-container { 
-            max-width: 1300px; 
-            margin: 0 auto; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 0 30px; 
+            max-width: 1300px; margin: 0 auto; 
+            display: flex; justify-content: space-between; align-items: center; padding: 0 30px; 
         }
         .logo { color: white; font-weight: 800; font-size: 1.6rem; letter-spacing: -1px; }
         .logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 30px; }
+        .nav-links { display: flex; gap: 25px; }
         nav a { 
-            color: #94a3b8; 
-            text-decoration: none; 
-            font-weight: 600; 
-            cursor: pointer; 
-            transition: 0.3s; 
-            font-size: 0.85rem; 
-            text-transform: uppercase;
+            color: #94a3b8; text-decoration: none; font-weight: 600; 
+            cursor: pointer; transition: 0.3s; font-size: 0.85rem; text-transform: uppercase;
         }
         nav a:hover, nav a.active { color: var(--white); }
 
         /* --- HERO SLIDER --- */
-        .slider-container { position: relative; width: 100%; height: 75vh; min-height: 550px; overflow: hidden; background: var(--slate-900); }
+        .slider-container { position: relative; width: 100%; height: 70vh; min-height: 550px; overflow: hidden; background: var(--slate-900); }
         .slides { display: none; height: 100%; position: relative; animation: fadeIn 0.8s ease; }
         .slides img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; }
         .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(15, 23, 42, 0.8), transparent); }
@@ -70,74 +62,61 @@
             color: white; text-align: left; width: 55%; z-index: 10;
         }
         .caption h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-        .caption p { font-size: 1.2rem; color: #cbd5e1; margin-bottom: 30px; }
-
         .slider-ctrl {
-            position: absolute; bottom: 40px; right: 50px; display: flex; gap: 15px; z-index: 100;
+            position: absolute; bottom: 30px; right: 50px; display: flex; gap: 15px; z-index: 100;
         }
         .ctrl-btn {
             background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-            color: white; width: 50px; height: 50px; border-radius: 50%; cursor: pointer;
+            color: white; width: 45px; height: 45px; border-radius: 50%; cursor: pointer;
             display: flex; align-items: center; justify-content: center; transition: 0.3s;
         }
         .ctrl-btn:hover { background: var(--primary); }
 
         /* --- CONTENEDORES --- */
-        .container { max-width: 1200px; margin: 60px auto; padding: 0 25px; }
+        .container { max-width: 1200px; margin: 80px auto; padding: 0 25px; }
         .content-section { display: none; }
         .active-section { display: block; animation: slideUp 0.6s ease; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
         .section-header { margin-bottom: 50px; text-align: center; }
-        .section-header h2 { font-size: 2.8rem; color: var(--dark); margin-bottom: 10px; }
-        .bar { height: 5px; width: 80px; background: var(--primary); margin: 0 auto; border-radius: 10px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--dark); margin-bottom: 10px; }
+        .bar { height: 4px; width: 70px; background: var(--primary); margin: 0 auto; border-radius: 10px; }
 
-        /* --- SESIÓN EXPERIENCIA DETALLADA (PROYECTOS EXPLICADOS) --- */
-        .exp-detail-card {
-            background: white;
-            border-radius: 30px;
-            overflow: hidden;
-            margin-bottom: 80px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.03);
-            border: 1px solid var(--border);
-        }
-        .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-        .exp-content { padding: 60px; }
-        .exp-visual { background: #f8fafc; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .exp-visual img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .exp-visual:hover img { transform: scale(1.05); }
+        /* --- SESIÓN EXPERIENCIA (DETALLES TÉCNICOS) --- */
+        .exp-detail-wrapper { background: var(--white); border-radius: 30px; border: 1px solid var(--border); padding: 50px; margin-bottom: 60px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        .exp-item { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 100px; }
+        .exp-item:nth-child(even) { direction: rtl; }
+        .exp-item:nth-child(even) .exp-text { direction: ltr; }
+        .exp-img-box img { width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .exp-text h3 { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+        .exp-text p { margin-bottom: 15px; color: var(--text-main); font-size: 1.05rem; }
+        .tech-pill { display: inline-block; background: #f1f5f9; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; margin-right: 5px; }
 
-        .tag-tech { 
-            display: inline-block; background: #eff6ff; color: var(--primary); 
-            padding: 5px 15px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; margin-bottom: 20px;
+        /* --- SESIÓN PORTAFOLIO (REDIRECCIÓN DIRECTA) --- */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .project-card { 
+            background: white; border-radius: 20px; overflow: hidden; 
+            border: 1px solid var(--border); transition: 0.4s;
         }
-        .exp-content h3 { font-size: 2rem; color: var(--dark); margin-bottom: 20px; line-height: 1.2; }
-        .exp-content p { margin-bottom: 20px; color: var(--text-main); }
-        
-        .feature-list { list-style: none; margin-bottom: 30px; }
-        .feature-list li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-weight: 500; }
-        .feature-list i { color: #10b981; }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .project-img { width: 100%; height: 220px; object-fit: cover; }
+        .project-info { padding: 25px; }
+        .project-tags { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
+        .tag { background: #eff6ff; color: var(--primary); padding: 4px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 600; }
 
         /* --- BOTONES --- */
         .btn { 
-            display: inline-flex; align-items: center; gap: 10px; padding: 14px 30px; 
-            background: var(--primary); color: white; border-radius: 12px; 
+            display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; 
+            background: var(--primary); color: white; border-radius: 10px; 
             text-decoration: none; font-weight: 700; transition: 0.3s;
         }
-        .btn:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
-        .btn-outline { background: white; border: 2px solid var(--primary); color: var(--primary); }
+        .btn:hover { background: var(--primary-dark); transform: scale(1.02); }
 
-        /* --- FOOTER --- */
         footer { background: var(--slate-900); color: #94a3b8; padding: 80px 20px; text-align: center; }
-        .social-links a { color: white; font-size: 1.5rem; margin: 0 15px; opacity: 0.6; transition: 0.3s; }
-        .social-links a:hover { opacity: 1; color: var(--accent); }
 
-        /* RESPONSIVE */
-        @media (max-width: 1000px) {
-            .exp-grid { grid-template-columns: 1fr; }
-            .exp-content { padding: 40px; }
-            .exp-visual { height: 350px; }
-            .caption { width: 85%; }
+        @media (max-width: 900px) {
+            .exp-item { grid-template-columns: 1fr; margin-bottom: 60px; }
+            .exp-item:nth-child(even) { direction: ltr; }
             .caption h1 { font-size: 2.5rem; }
         }
     </style>
@@ -150,6 +129,7 @@
     <div class="nav-links">
       <a onclick="showSection('inicio')">Inicio</a>
       <a onclick="showSection('experiencia')">Experiencia Pro</a>
+      <a onclick="showSection('proyectos')">Portafolio</a>
       <a onclick="showSection('academia')">Academia</a>
       <a onclick="showSection('contacto')">Contacto</a>
     </div>
@@ -160,40 +140,39 @@
   <div class="slider-container">
     <div class="slides">
       <div class="overlay"></div>
-      <img src="https://images.unsplash.com/photo-1550741113-5744382df20b?q=80&w=2070">
+      <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070">
       <div class="caption">
-        <h1>Ingeniería de Software con Propósito</h1>
-        <p>Especializado en crear ecosistemas digitales robustos, desde la arquitectura de datos hasta la interfaz final.</p>
-        <button class="btn" onclick="showSection('experiencia')">Explorar Proyectos Detallados <i class="fas fa-chevron-right"></i></button>
+        <h1>Sistemas de Software de Alto Nivel</h1>
+        <p>Ingeniería aplicada a la resolución de problemas complejos y optimización administrativa.</p>
+        <button class="btn" onclick="showSection('proyectos')">Ver Proyectos <i class="fas fa-external-link-alt"></i></button>
       </div>
     </div>
     <div class="slides">
         <div class="overlay"></div>
-        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070">
         <div class="caption">
-          <h1>Arquitecturas Escalables</h1>
-          <p>Implementación de microservicios y bases de datos de alta disponibilidad para entornos corporativos.</p>
-          <button class="btn" onclick="showSection('contacto')">Iniciar Colaboración</button>
+          <h1>Arquitectura & Backend</h1>
+          <p>Especialista en desarrollo robusto con Python, Node.js y gestión avanzada de bases de datos.</p>
+          <button class="btn" onclick="showSection('experiencia')">Detalles Técnicos</button>
         </div>
       </div>
-
     <div class="slider-ctrl">
-        <button class="ctrl-btn" onclick="plusSlides(-1)"><i class="fas fa-arrow-left"></i></button>
-        <button class="ctrl-btn" onclick="plusSlides(1)"><i class="fas fa-arrow-right"></i></button>
+        <button class="ctrl-btn" onclick="plusSlides(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="ctrl-btn" onclick="plusSlides(1)"><i class="fas fa-chevron-right"></i></button>
     </div>
   </div>
-
-  <div class="container">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
-        <div style="background:white; padding:40px; border-radius:25px; border:1px solid var(--border)">
-            <i class="fas fa-database" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 20px;"></i>
-            <h3>Gestión de Big Data</h3>
-            <p>Optimización de infraestructuras para el manejo masivo de información académica y financiera.</p>
+  <div class="container" style="text-align: center;">
+    <h2>Especialidades Técnicas</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px;">
+        <div style="background:white; padding:30px; border-radius:20px; border:1px solid var(--border)">
+            <i class="fas fa-server" style="font-size: 2rem; color: var(--primary);"></i>
+            <h3>Backend Robust</h3>
+            <p>APIs seguras y escalables para procesos masivos.</p>
         </div>
-        <div style="background:white; padding:40px; border-radius:25px; border:1px solid var(--border)">
-            <i class="fas fa-rocket" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 20px;"></i>
-            <h3>Alta Disponibilidad</h3>
-            <p>Sistemas diseñados para operar 24/7 con redundancia de datos y balanceo de carga.</p>
+        <div style="background:white; padding:30px; border-radius:20px; border:1px solid var(--border)">
+            <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--primary);"></i>
+            <h3>Data Analytics</h3>
+            <p>Transformación de bases de datos en insights estratégicos.</p>
         </div>
     </div>
   </div>
@@ -202,69 +181,64 @@
 <div id="experiencia" class="content-section">
     <div class="container">
         <div class="section-header">
-            <h2>Experiencia & Casos de Éxito</h2>
-            <p>Análisis técnico profundo de las soluciones desarrolladas.</p>
+            <h2>Experiencia Detallada</h2>
+            <p>Contexto técnico y metodologías aplicadas en cada desarrollo.</p>
             <div class="bar"></div>
         </div>
 
-        <div class="exp-detail-card">
-            <div class="exp-grid">
-                <div class="exp-content">
-                    <span class="tag-tech">FULL STACK DEVELOPMENT</span>
-                    <h3>Sistema Administrativo Unificado (SAU)</h3>
-                    <p><strong>El Desafío:</strong> Las instituciones educativas manejaban procesos fragmentados, causando pérdida de datos y lentitud en los reportes gubernamentales.</p>
-                    <p><strong>La Solución:</strong> Desarrollé un núcleo centralizado con Python y SQL Server que unifica la gestión académica, financiera y administrativa en un solo flujo de trabajo.</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Sincronización en tiempo real de notas y pagos.</li>
-                        <li><i class="fas fa-check-circle"></i> Módulo de seguridad con roles jerárquicos (RBAC).</li>
-                        <li><i class="fas fa-check-circle"></i> Exportación automática de informes en formatos legales.</li>
-                    </ul>
-                    <div style="display: flex; gap: 15px;">
-                        <a href="https://unicienciabga.edu.co/" target="_blank" class="btn">Visitar Proyecto <i class="fas fa-external-link-alt"></i></a>
-                    </div>
+        <div class="exp-detail-wrapper">
+            <div class="exp-item">
+                <div class="exp-img-box">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" alt="SAU Backend">
                 </div>
-                <div class="exp-visual">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000" alt="Vista SAU">
+                <div class="exp-text">
+                    <span class="tech-pill">Arquitectura</span><span class="tech-pill">Python</span>
+                    <h3>Ingeniería del SAU</h3>
+                    <p>En el desarrollo del **Sistema Administrativo Unificado**, el objetivo fue centralizar la lógica de negocio académica. Se implementó una arquitectura MVC robusta para manejar miles de registros estudiantiles.</p>
+                    <p>Se diseñó un esquema de base de datos relacional optimizado para evitar la redundancia y garantizar la integridad referencial en los reportes financieros.</p>
+                    <p><strong>Logro:</strong> Reducción del 40% en tiempos de procesamiento de matrículas.</p>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-img-box">
+                    <img src="https://images.unsplash.com/photo-1551288049-bbbda50a5f4e?w=800" alt="Data Science">
+                </div>
+                <div class="exp-text">
+                    <span class="tech-pill">BI</span><span class="tech-pill">Chart.js</span>
+                    <h3>Módulo de Inteligencia</h3>
+                    <p>Este proyecto se centró en la capa de presentación de datos. Se desarrollaron conectores de datos para transformar tablas SQL planas en objetos JSON dinámicos consumibles por el frontend.</p>
+                    <p>Se aplicaron principios de UX para que los directivos pudieran identificar patrones de deserción mediante filtros interactivos y mapas de calor.</p>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <div class="exp-detail-card">
-            <div class="exp-grid">
-                <div class="exp-visual">
-                    <img src="https://images.unsplash.com/photo-1551288049-bbbda50a5f4e?w=1000" alt="Data Analytics">
-                </div>
-                <div class="exp-content">
-                    <span class="tag-tech">DATA ENGINEERING & BI</span>
-                    <h3>Dashboard de Analítica Avanzada</h3>
-                    <p><strong>El Desafío:</strong> Los directivos no podían visualizar tendencias de deserción o rendimiento estudiantil debido a que los datos estaban "crudos".</p>
-                    <p><strong>La Solución:</strong> Implementé un pipeline de datos que extrae información del SAU, la procesa y la visualiza mediante gráficos dinámicos interactivos.</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Visualización de KPIs mediante Chart.js y D3.js.</li>
-                        <li><i class="fas fa-check-circle"></i> Predicción de riesgos académicos mediante lógica estadística.</li>
-                        <li><i class="fas fa-check-circle"></i> Interfaz responsive para acceso desde móviles.</li>
-                    </ul>
-                    <a href="#" class="btn btn-outline">Ver Repositorio Code <i class="fab fa-github"></i></a>
+<div id="proyectos" class="content-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Portafolio de Proyectos</h2>
+            <p>Acceso directo a las plataformas y demos en vivo.</p>
+            <div class="bar"></div>
+        </div>
+        <div class="project-grid">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=600" class="project-img">
+                <div class="project-info">
+                    <div class="project-tags"><span class="tag">SAU</span><span class="tag">SQL Server</span></div>
+                    <h3>Sistema Administrativo Unificado</h3>
+                    <p>Gestión académica integral para instituciones de educación superior.</p>
+                    <a href="https://unicienciabga.edu.co/" target="_blank" class="btn" style="margin-top:15px; font-size: 0.8rem;">Ver Demo Online <i class="fas fa-link"></i></a>
                 </div>
             </div>
-        </div>
-
-        <div class="exp-detail-card">
-            <div class="exp-grid">
-                <div class="exp-content">
-                    <span class="tag-tech">UI/UX & WEB PERFORMANCE</span>
-                    <h3>Ecosistema Digital Uniciencia</h3>
-                    <p><strong>El Desafío:</strong> Necesidad de una presencia web moderna que integrara servicios internos con información pública de manera rápida y segura.</p>
-                    <p><strong>La Solución:</strong> Rediseño total basado en la experiencia de usuario, optimizando el SEO y reduciendo el tiempo de carga en un 50%.</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Arquitectura SPA (Single Page Application).</li>
-                        <li><i class="fas fa-check-circle"></i> Integración fluida con el sistema de matrículas.</li>
-                        <li><i class="fas fa-check-circle"></i> Accesibilidad garantizada bajo estándares W3C.</li>
-                    </ul>
-                    <a href="https://unicienciabga.edu.co/" target="_blank" class="btn">Abrir Portal <i class="fas fa-link"></i></a>
-                </div>
-                <div class="exp-visual">
-                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1000" alt="Web Portal">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600" class="project-img">
+                <div class="project-info">
+                    <div class="project-tags"><span class="tag">BI</span><span class="tag">Analytics</span></div>
+                    <h3>Dashboard Directivo</h3>
+                    <p>Visualización de KPIs y analítica de datos en tiempo real.</p>
+                    <a href="#" class="btn" style="margin-top:15px; font-size: 0.8rem;">Ver Detalles <i class="fas fa-chart-pie"></i></a>
                 </div>
             </div>
         </div>
@@ -274,82 +248,61 @@
 <div id="academia" class="content-section">
     <div class="container">
         <div class="section-header">
-            <h2>Academia & Formación</h2>
+            <h2>Recursos Académicos</h2>
             <div class="bar"></div>
         </div>
-        <div style="background:white; padding:50px; border-radius:30px; border:1px solid var(--border); text-align: center;">
-            <i class="fas fa-graduation-cap" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
-            <h3>Ingeniería de Sistemas</h3>
-            <p style="max-width: 600px; margin: 0 auto 20px;">Formación continua en nuevas tecnologías. Mi enfoque académico combina la teoría rigurosa con la práctica directa en proyectos de gran escala.</p>
-            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-                <span class="tag-tech">Python Specialist</span>
-                <span class="tag-tech">Database Architect</span>
-                <span class="tag-tech">Scrum Master</span>
-            </div>
+        <div style="background:white; padding:40px; border-radius:20px; border:1px solid var(--border);">
+            <h3>Formación Técnica</h3>
+            <p>Especialización en Ingeniería de Sistemas con énfasis en desarrollo escalable y seguridad informática.</p>
         </div>
     </div>
 </div>
 
 <div id="contacto" class="content-section">
-    <div class="container" style="max-width: 900px;">
-        <div style="background: var(--dark); padding: 60px; border-radius: 40px; color: white; text-align: center;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">¿Tienes un reto tecnológico?</h2>
-            <p style="color: #94a3b8; margin-bottom: 40px;">Hablemos sobre cómo puedo ayudar a escalar tu software.</p>
-            <form onsubmit="alert('Mensaje enviado. Me pondré en contacto contigo pronto.'); return false;">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <input type="text" placeholder="Nombre" required style="padding:15px; border-radius:12px; border:none; background: rgba(255,255,255,0.1); color: white;">
-                    <input type="email" placeholder="Email" required style="padding:15px; border-radius:12px; border:none; background: rgba(255,255,255,0.1); color: white;">
+    <div class="container" style="max-width: 800px;">
+        <div style="background:var(--dark); padding:50px; border-radius:30px; color:white;">
+            <h2 style="text-align:center; margin-bottom:30px;">Hablemos de tu proyecto</h2>
+            <form>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                    <input type="text" placeholder="Nombre" style="padding:15px; border-radius:10px; border:none;">
+                    <input type="email" placeholder="Email" style="padding:15px; border-radius:10px; border:none;">
                 </div>
-                <textarea rows="5" placeholder="Cuéntame sobre tu proyecto..." required style="width:100%; margin-top:20px; padding:15px; border-radius:12px; border:none; background: rgba(255,255,255,0.1); color: white;"></textarea>
-                <button class="btn" style="width: 100%; margin-top: 20px; justify-content: center; font-size: 1.1rem;">Enviar Mensaje <i class="fas fa-paper-plane"></i></button>
+                <textarea rows="4" placeholder="Mensaje" style="width:100%; margin-top:20px; padding:15px; border-radius:10px; border:none;"></textarea>
+                <button class="btn" style="width:100%; margin-top:20px; justify-content:center;">Enviar Solicitud</button>
             </form>
         </div>
     </div>
 </div>
 
 <footer>
-    <div class="social-links" style="margin-bottom: 30px;">
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fas fa-envelope"></i></a>
+    <div style="margin-bottom: 20px;">
+        <a href="#" style="color:white; margin: 0 15px; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+        <a href="#" style="color:white; margin: 0 15px; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
     </div>
-    <p style="color: white; font-weight: 700;">© 2026 - Camilo Carmona</p>
-    <p style="margin-top: 10px; font-size: 0.9rem;">Bucaramanga, Santander, Colombia</p>
+    <p>© 2026 Camilo Carmona | Ingeniería de Sistemas</p>
 </footer>
 
 <script>
-    // LÓGICA DEL SLIDER
+    // SLIDER
     let slideIndex = 1;
     showSlides(slideIndex);
-
     function plusSlides(n) { showSlides(slideIndex += n); }
-
     function showSlides(n) {
         let slides = document.getElementsByClassName("slides");
         if (n > slides.length) {slideIndex = 1}    
         if (n < 1) {slideIndex = slides.length}
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-        }
+        for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
         slides[slideIndex-1].style.display = "block";  
     }
+    setInterval(() => { plusSlides(1); }, 7000);
 
-    // Auto-avance
-    setInterval(() => { plusSlides(1); }, 10000);
-
-    // NAVEGACIÓN SPA
+    // SPA NAVEGACIÓN
     function showSection(id) {
-        document.querySelectorAll('.content-section').forEach(section => {
-            section.classList.remove('active-section');
-        });
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.classList.remove('active');
-        });
-        
+        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active-section'));
+        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
         document.getElementById(id).classList.add('active-section');
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 </script>
-
 </body>
 </html>
