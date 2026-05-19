@@ -1,11 +1,165 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Mantenimiento</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Página en mantenimiento</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#0f172a,#1e293b);
+      font-family:Arial, Helvetica, sans-serif;
+      color:white;
+      overflow:hidden;
+    }
+
+    .background{
+      position:absolute;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      z-index:0;
+    }
+
+    .circle{
+      position:absolute;
+      border-radius:50%;
+      background:rgba(255,255,255,0.05);
+      animation:float 12s infinite ease-in-out;
+    }
+
+    .circle:nth-child(1){
+      width:300px;
+      height:300px;
+      top:-100px;
+      left:-100px;
+    }
+
+    .circle:nth-child(2){
+      width:200px;
+      height:200px;
+      bottom:-50px;
+      right:10%;
+      animation-delay:2s;
+    }
+
+    .circle:nth-child(3){
+      width:150px;
+      height:150px;
+      top:20%;
+      right:-50px;
+      animation-delay:4s;
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-20px);
+      }
+    }
+
+    .card{
+      position:relative;
+      z-index:1;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,0.1);
+      padding:50px;
+      border-radius:24px;
+      text-align:center;
+      width:90%;
+      max-width:550px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    .icon{
+      font-size:70px;
+      margin-bottom:20px;
+    }
+
+    h1{
+      font-size:2.5rem;
+      margin-bottom:15px;
+      font-weight:700;
+    }
+
+    p{
+      font-size:1.1rem;
+      color:#d1d5db;
+      line-height:1.6;
+      margin-bottom:30px;
+    }
+
+    .status{
+      display:inline-block;
+      padding:10px 20px;
+      border-radius:999px;
+      background:#f59e0b;
+      color:#111827;
+      font-weight:bold;
+      font-size:0.9rem;
+    }
+
+    .footer{
+      margin-top:35px;
+      font-size:0.9rem;
+      color:#9ca3af;
+    }
+
+    @media(max-width:600px){
+      .card{
+        padding:35px 25px;
+      }
+
+      h1{
+        font-size:2rem;
+      }
+
+      p{
+        font-size:1rem;
+      }
+    }
+  </style>
 </head>
-<body style="font-family:Arial;text-align:center;padding-top:100px;">
-  <h1>🚧 Página en mantenimiento</h1>
-  <p>Volveremos pronto.</p>
+
+<body>
+
+  <div class="background">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+
+  <div class="card">
+    <div class="icon">🚧</div>
+
+    <h1>Página en mantenimiento</h1>
+
+    <p>
+      Estamos realizando mejoras para ofrecerte una mejor experiencia.
+      El sitio volverá a estar disponible muy pronto.
+    </p>
+
+    <div class="status">
+      Mantenimiento en progreso
+    </div>
+
+    <div class="footer">
+      Gracias por tu paciencia
+    </div>
+  </div>
+
 </body>
 </html>
